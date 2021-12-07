@@ -56,7 +56,7 @@ public class Main {
         consumer.begin();
 
         try {
-            HttpServer server = HttpServer.create(new InetSocketAddress("192.168.4.2", 8080), 0);
+            HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
             server.createContext("/metrics", httpExchange -> {
                 String response = prometheusRegistry.scrape();
                 httpExchange.sendResponseHeaders(200, response.getBytes().length);
